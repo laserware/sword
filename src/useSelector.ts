@@ -1,12 +1,29 @@
-import type { Selector } from "@reduxjs/toolkit";
 import { type Readable, readable } from "svelte/store";
 
 import { getStoreContext } from "./context";
-import type { State } from "./types";
+import type { ReduxState, Redux } from "./types";
 
-export function useSelector<R, S = State>(
-  selector: Selector<S, R>,
-): Readable<R> {
+/**
+ * Returns a Svelte store that subscribes to changes in the value returned by
+ * the specified selector.
+ * @param selector Selector function either returned by `createSelector` (from `reselect`)
+ *                 or a simple state accessor.
+ *
+ * @example
+ * // Inside a Svelte <script> block:
+ * import { useSelector } from "@laserware/sword";
+ * import { selectStateValue } from "./selectors";
+ *
+ * const stateValue = useSelector(selectStateValue);
+ *
+ * function handleClick() {
+ *   // Note that you must use `$` prefix because it is a Svelte store:
+ *   console.log($stateValue);
+ * }
+ */
+export function useSelector<Result, State = ReduxState>(
+  selector: Redux.Selector<State, Result>,
+): Readable<Result> {
   const store = getStoreContext();
 
   return readable(
@@ -20,7 +37,7 @@ export function useSelector<R, S = State>(
     // whenever it changes. This enables us to maintain a laser focus on only
     // updating the UI in response to changes to this particular slice of state,
     // and it eliminates a lot of extra boilerplate code:
-    function start(set: (value: R) => void) {
+    function start(set: (value: Result) => void) {
       const unsubscribe = store.subscribe(() => {
         // @ts-ignore
         set(selector(store.getState()));
