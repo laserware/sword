@@ -4,55 +4,45 @@ import type {
   SvelteComponent,
 } from "svelte";
 
-import { getStoreContextKey, overrideStoreContextKey } from "./context";
+import { storeContextKey } from "./context";
 import type { ReduxState, Redux } from "./types";
-
-type WithStoreOptions<S = ReduxState> = {
-  component: ComponentType;
-  options: ComponentConstructorOptions;
-  store: Redux.Store<S>;
-  contextKey?: string;
-};
 
 /**
  * Adds the specified Redux store to the specified Svelte component entry point
  * with the specified component options. This must be done in order to use the
  * {@link useDispatch}, {@link useSelector}, and {@link useStore} functions.
- * @param component Svelte component entry point for the application
+ * @param Component Svelte component entry point for the application
  * @param options Svelte component constructor options
  * @param store Redux store for the application
- * @param [contextKey="@laserware/sword/store"] Optional override for the default store context key
  * @example
  * import { withStore } from "@laserware/sword";
  *
  * import App from "./App.svelte";
- * import { configureStore } from "./redux";
+ * import { createStore } from "./my-redux-store";
  *
- * const store = configureStore();
+ * const store = createStore();
  *
- * const app = withStore({
- *   component: App,
- *   options: { target: document.body },
+ * const app = withStore(
  *   store,
- *   // Optionally override default context key:
- *   contextKey: "some-custom-context-key",
- * });
+ *   App,
+ *   { target: document.body },
+ * );
  *
  * export default app;
  */
-export function withStore<S = ReduxState>({
-  component,
-  options,
-  store,
-  contextKey,
-}: WithStoreOptions<S>): SvelteComponent {
+export function withStore<S = ReduxState>(
+  store: Redux.Store<S>,
+  Component: ComponentType,
+  options: ComponentConstructorOptions,
+): SvelteComponent {
   const context = options.context ?? new Map();
 
-  if (contextKey !== undefined) {
-    overrideStoreContextKey(contextKey);
+  if (context.has(storeContextKey)) {
+    // prettier-ignore
+    throw new Error(`Context entry with key ${storeContextKey} already exists, please choose another name for your key`);
   }
 
-  context.set(getStoreContextKey(), store);
+  context.set(storeContextKey, store);
 
-  return new component({ ...options, context });
+  return new Component({ ...options, context });
 }

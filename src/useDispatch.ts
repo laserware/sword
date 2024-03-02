@@ -7,7 +7,7 @@ import type { Redux } from "./types";
  * // Inside a Svelte <script> block:
  * import { useDispatch } from "@laserware/sword";
  *
- * import { someAction } from "./actions";
+ * import { someAction } from "./my-redux-actions";
  *
  * const dispatch = useDispatch();
  *

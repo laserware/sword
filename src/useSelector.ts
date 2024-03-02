@@ -12,7 +12,8 @@ import type { ReduxState, Redux } from "./types";
  * @example
  * // Inside a Svelte <script> block:
  * import { useSelector } from "@laserware/sword";
- * import { selectStateValue } from "./selectors";
+ *
+ * import { selectStateValue } from "./my-redux-selectors";
  *
  * const stateValue = useSelector(selectStateValue);
  *
