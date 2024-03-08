@@ -1,6 +1,6 @@
 {
   "name": "@laserware/sword",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Svelte wrapper over Redux.",
   "types": "dist/index.d.ts",
   "browser": "dist/index.mjs",
