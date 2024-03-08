@@ -23,18 +23,18 @@ declare module "@laserware/sword" {
 }
 ```
 
-Wrap your Svelte entry point component with `withStore`:
+Wrap your Svelte entry point component with `withSword`:
 
 ```ts
 // src/main.ts
-import { withStore } from "@laserware/sword";
+import { withSword } from "@laserware/sword";
 
 import App from "./App.svelte";
 import { createStore } from "./my-redux-store";
 
 const store = createStore();
 
-const app = withStore(store, App, { target: document.body });
+const app = withSword(store, App, { target: document.body });
 ```
 
 Import the `useDispatch` or `useSelect` functions in components that need to dispatch Redux actions or access Redux state:

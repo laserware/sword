@@ -99,9 +99,9 @@ export namespace Redux {
 
   /**
    * A standard selector function.
-   * @template State - The first value, often a Redux root state object.
-   * @template Result - The final result returned by the selector.
-   * @template Params - All additional arguments passed into the selector.
+   * @template State The first value, often a Redux root state object.
+   * @template Result The final result returned by the selector.
+   * @template Params All additional arguments passed into the selector.
    *
    * @public
    */

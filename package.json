@@ -29,7 +29,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && cd dist && npx prettier --write .",
     "prepublishOnly": "npm run build",
     "preversion": "npm run eslint && npm run typecheck",
     "version": "npm run prettier && git add -A src",
@@ -49,7 +49,7 @@
     "svelte": "^4.2.12",
     "svelte-check": "^3.6.6",
     "tsup": "^8.0.2",
-    "typescript": "^5.3.3",
+    "typescript": "^5.4.2",
     "vitest": "^1.3.1"
   },
   "peerDependencies": {
