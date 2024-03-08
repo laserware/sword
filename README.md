@@ -10,19 +10,6 @@ Install the dependency. Note that `svelte` is required as a peer dependency:
 npm install @laserware/sword svelte
 ```
 
-Use declaration merging to specify your Redux state (optional):
-
-```ts
-// sword.d.ts
-import "@laserware/sword";
-
-declare module "@laserware/sword" {
-  import type { MyCustomReduxState } from "./my-redux-state";
-  
-  export interface ReduxState extends MyCustomReduxState {}
-}
-```
-
 Wrap your Svelte entry point component with `withSword`:
 
 ```ts

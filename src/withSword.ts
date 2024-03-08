@@ -1,3 +1,4 @@
+import type { Store } from "@laserware/stasis";
 import type {
   ComponentConstructorOptions,
   ComponentType,
@@ -5,12 +6,14 @@ import type {
 } from "svelte";
 
 import { storeContextKey } from "./context";
-import type { ReduxState, Redux } from "./types";
 
 /**
  * Adds the specified Redux store to the specified Svelte component entry point
  * with the specified component options. This must be done in order to use the
  * {@link useDispatch}, {@link useSelector}, and {@link useStore} functions.
+ *
+ * @template State Redux state definition.
+ *
  * @param Component Svelte component entry point for the application.
  * @param options Svelte component constructor options.
  * @param store Redux store for the application.
@@ -30,8 +33,8 @@ import type { ReduxState, Redux } from "./types";
  *
  * export default app;
  */
-export function withSword<S = ReduxState>(
-  store: Redux.Store<S>,
+export function withSword<State>(
+  store: Store<State>,
   Component: ComponentType,
   options: ComponentConstructorOptions,
 ): SvelteComponent {

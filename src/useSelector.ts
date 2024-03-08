@@ -1,11 +1,15 @@
+import type { Selector } from "@laserware/stasis";
 import { type Readable, readable } from "svelte/store";
 
 import { getStoreContext } from "./context";
-import type { ReduxState, Redux } from "./types";
 
 /**
  * Returns a Svelte store that subscribes to changes in the value returned by
  * the specified selector.
+ *
+ * @template Result Result returned from the selector.
+ * @template State Redux state definition.
+ *
  * @param selector Selector function either returned by `createSelector` (from `reselect`)
  *                 or a simple state accessor.
  *
@@ -22,8 +26,8 @@ import type { ReduxState, Redux } from "./types";
  *   console.log($stateValue);
  * }
  */
-export function useSelector<Result, State = ReduxState>(
-  selector: Redux.Selector<State, Result>,
+export function useSelector<Result, State>(
+  selector: Selector<State, Result>,
 ): Readable<Result> {
   const store = getStoreContext();
 
