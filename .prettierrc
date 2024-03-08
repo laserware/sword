@@ -1,7 +1,6 @@
 {
   "trailingComma": "all",
   "htmlWhitespaceSensitivity": "ignore",
-  "plugins": ["prettier-plugin-svelte"],
   "overrides": [
     {
       "files": "*.svelte",
