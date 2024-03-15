@@ -6,10 +6,9 @@ export default defineConfig({
   dts: true,
   format: "esm",
   minify: false,
-  outExtension: () => ({ js: ".mjs" }),
   platform: "browser",
   sourcemap: true,
   target: "esnext",
-  treeshake: true,
+  treeshake: false,
   tsconfig: "./tsconfig.build.json",
 });
