@@ -1,11 +1,9 @@
 import type { Store } from "@laserware/stasis";
-import type {
-  ComponentConstructorOptions,
-  ComponentType,
-  SvelteComponent,
-} from "svelte";
+import { mount, type ComponentType, type SvelteComponent } from "svelte";
 
 import { storeContextKey } from "./context";
+
+type Options = Parameters<typeof mount>[1];
 
 /**
  * Adds the specified Redux store to the specified Svelte component entry point
@@ -36,7 +34,7 @@ import { storeContextKey } from "./context";
 export function withSword<State>(
   store: Store<State>,
   Component: ComponentType,
-  options: ComponentConstructorOptions,
+  options: Options,
 ): SvelteComponent {
   const context = options.context ?? new Map();
 
@@ -47,5 +45,5 @@ export function withSword<State>(
 
   context.set(storeContextKey, store);
 
-  return new Component({ ...options, context });
+  return mount(Component, options);
 }
