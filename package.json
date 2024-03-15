@@ -54,6 +54,6 @@
   },
   "peerDependencies": {
     "@laserware/stasis": ">=3",
-    "svelte": ">=5"
+    "svelte": "*"
   }
 }
