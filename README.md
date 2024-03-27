@@ -35,11 +35,11 @@ Import the `useDispatch` or `useSelect` functions in components that need to dis
   import { selectSomeValue } from "./my-redux-selectors";
 
   const dispatch = useDispatch();
-  
+
   const someValue = useSelector(selectSomeValue);
-  
+
   function handleClick(): void {
-    // Note that you must use a `$` prefix because 
+    // Note that you must use a `$` prefix because
     // `useSelector` returns a Svelte store:
     dispatch(someAction($someValue));
   }

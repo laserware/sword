@@ -2,6 +2,7 @@
   "name": "@laserware/sword",
   "version": "2.0.2",
   "description": "Svelte wrapper over Redux.",
+  "type": "module",
   "types": "dist/index.d.ts",
   "browser": "dist/index.js",
   "svelte": "dist/index.js",
@@ -12,7 +13,6 @@
       "default": "./dist/index.js"
     }
   },
-  "type": "module",
   "repository": {
     "url": "git+https://github.com/laserware/sword.git",
     "type": "git"
@@ -30,7 +30,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsup && cd dist && npx prettier --write .",
+    "build": "tsc -p tsconfig.build.json && npx prettier --write .",
     "prepublishOnly": "npm run build",
     "preversion": "npm run eslint && npm run typecheck",
     "version": "npm run prettier && git add -A src",
@@ -48,7 +48,6 @@
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
     "svelte": "5.0.0-next.75",
-    "tsup": "^8.0.2",
     "typescript": "^5.4.2",
     "vitest": "^1.3.1"
   },
