@@ -38,11 +38,6 @@ export function withSword<State>(
 ): SvelteComponent {
   const context = options.context ?? new Map();
 
-  if (context.has(storeContextKey)) {
-    // prettier-ignore
-    throw new Error(`Context entry with key ${storeContextKey} already exists, please choose another name for your key`);
-  }
-
   context.set(storeContextKey, store);
 
   return mount(Component, options);
