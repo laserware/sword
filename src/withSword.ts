@@ -3,7 +3,7 @@ import { mount } from "svelte";
 
 import { storeContextKey } from "./context";
 
-type MountOptions = ReturnType<typeof mount>;
+type MountOptions = Parameters<typeof mount>[1];
 
 /**
  * Adds the specified Redux store to the specified Svelte component options.
