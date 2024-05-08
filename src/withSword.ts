@@ -1,7 +1,7 @@
 import type { Store } from "@laserware/stasis";
 import { mount, type ComponentType, type SvelteComponent } from "svelte";
 
-import { storeContextKey } from "./context";
+import { storeContextKey } from "./context.ts";
 
 type Options = Parameters<typeof mount>[1];
 
@@ -29,16 +29,16 @@ type Options = Parameters<typeof mount>[1];
  *   { target: document.body },
  * );
  *
- * export default app;
+ * export default app();
  */
 export function withSword<State>(
   store: Store<State>,
   Component: ComponentType,
   options: Options,
-): SvelteComponent {
+): () => SvelteComponent {
   const context = options.context ?? new Map();
 
   context.set(storeContextKey, store);
 
-  return mount(Component, options);
+  return () => mount(Component, options);
 }
