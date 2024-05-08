@@ -1,7 +1,7 @@
 import type { Selector } from "@laserware/stasis";
 import { readable, type Readable } from "svelte/store";
 
-import { getStoreContext } from "./context.ts";
+import { getStoreContext } from "./context";
 
 /**
  * Returns a Svelte store that subscribes to changes in the value returned by
