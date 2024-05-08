@@ -15,13 +15,14 @@ Wrap your Svelte entry point component with `withSword`:
 ```ts
 // src/main.ts
 import { withSword } from "@laserware/sword";
+import { mount } from "svelte";
 
 import App from "./App.svelte";
 import { createStore } from "./my-redux-store";
 
 const store = createStore();
 
-const app = withSword(store, App, { target: document.body });
+const app = mount(App, withSword(store, { target: document.body }));
 
 export default app();
 ```
