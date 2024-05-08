@@ -1,7 +1,7 @@
 import type { Selector } from "@laserware/stasis";
-import { type Readable, readable } from "svelte/store";
+import { readable, type Readable } from "svelte/store";
 
-import { getStoreContext } from "./context";
+import { getStoreContext } from "./context.ts";
 
 /**
  * Returns a Svelte store that subscribes to changes in the value returned by
@@ -12,6 +12,7 @@ import { getStoreContext } from "./context";
  *
  * @param selector Selector function either returned by `createSelector` (from `reselect`)
  *                 or a simple state accessor.
+ * @param args Additional args to pass to selector.
  *
  * @example
  * // Inside a Svelte <script> block:
@@ -28,6 +29,7 @@ import { getStoreContext } from "./context";
  */
 export function useSelector<Result, State>(
   selector: Selector<State, Result>,
+  ...args: any[]
 ): Readable<Result> {
   const store = getStoreContext();
 
@@ -36,7 +38,7 @@ export function useSelector<Result, State>(
     // current value in state, otherwise we'll get undefined errors all over
     // the place:
     // @ts-ignore
-    selector(store.getState()),
+    selector(store.getState<State>(), ...args),
 
     // Create the Redux subscription that updates the Svelte store value
     // whenever it changes. This enables us to maintain a laser focus on only
@@ -45,7 +47,7 @@ export function useSelector<Result, State>(
     function start(set: (value: Result) => void) {
       const unsubscribe = store.subscribe(() => {
         // @ts-ignore
-        set(selector(store.getState()));
+        set(selector(store.getState(), ...args));
       });
 
       // As soon as we unsubscribe from the Svelte store, ensure we also
