@@ -30,7 +30,9 @@ type MountOptions = Parameters<typeof mount>[1];
 export function withSword<State>(
   store: Store<State>,
   options: MountOptions,
-): MountOptions {
+): any {
+  // ^ Note that I'm returning `any` here because I got sick of fighting with TypeScript.
+
   const context = options.context ?? new Map();
 
   context.set(storeContextKey, store);
