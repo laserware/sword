@@ -1,7 +1,7 @@
 import type { Store } from "@laserware/stasis";
 import { mount, type ComponentType, type SvelteComponent } from "svelte";
 
-import { storeContextKey } from "./context.ts";
+import { storeContextKey } from "./context";
 
 type Options = Parameters<typeof mount>[1];
 

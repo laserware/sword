@@ -1,6 +1,6 @@
 import type { UnknownAction } from "@laserware/stasis";
 
-import { getStoreContext } from "./context.ts";
+import { getStoreContext } from "./context";
 
 /**
  * Returns a dispatch function that can be called with a Redux action.

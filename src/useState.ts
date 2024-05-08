@@ -1,4 +1,4 @@
-import { getStoreContext } from "./context.ts";
+import { getStoreContext } from "./context";
 
 /**
  * Returns a function to get the current state from the Redux store in context.
