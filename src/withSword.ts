@@ -25,7 +25,7 @@ import { storeContextKey } from "./context";
  *
  * const store = createStore();
  *
- * const app = withStore(
+ * const app = withSword(
  *   store,
  *   App,
  *   { target: document.body },
