@@ -39,7 +39,9 @@
     "prettier": "prettier --cache --write src",
     "prettier:ci": "prettier --check src",
     "eslint": "eslint --cache src",
-    "vitest": "vitest"
+    "vitest": "vitest",
+    "postinstall": "cd example && npm install",
+    "example": "cd example && npm run start"
   },
   "devDependencies": {
     "@laserware/eslint-config": "^3.2.2",
