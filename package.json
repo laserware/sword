@@ -40,7 +40,6 @@
     "prettier:ci": "prettier --check src",
     "eslint": "eslint --cache src",
     "vitest": "vitest",
-    "postinstall": "cd example && npm install",
     "example": "cd example && npm run start"
   },
   "devDependencies": {
