@@ -56,7 +56,7 @@ Import the `useDispatch` or `useSelect` functions in components that need to dis
   const someValue = useSelector(selectSomeValue);
 
   function handleClick(): void {
-    dispatch(someAction(someValue.value));
+    dispatch(someAction($someValue));
   }
 </script>
 
