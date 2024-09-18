@@ -1,11 +1,14 @@
-import { configureStore, createSlice, type Store } from "@laserware/stasis";
+import { configureStore, createSlice } from "@laserware/stasis";
 
 export const counterSlice = createSlice({
   name: "counter",
   initialState: {
-    value: 0 as number,
+    value: 0,
   },
   reducers: {
+    decrement(state) {
+      state.value -= 1;
+    },
     increment(state) {
       state.value += 1;
     },
@@ -15,7 +18,7 @@ export const counterSlice = createSlice({
   },
 });
 
-export function createStore(): Store {
+export function createStore() {
   return configureStore({
     reducer: {
       counter: counterSlice.reducer,

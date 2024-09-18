@@ -1,6 +1,6 @@
 import type { Store } from "@laserware/stasis";
 
-import { getStoreContext } from "./context";
+import { getStoreContext } from "./context.js";
 
 /**
  * Returns the Redux store from Svelte context. Note that you should normally
