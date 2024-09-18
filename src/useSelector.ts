@@ -3,8 +3,6 @@ import { readable, type Readable } from "svelte/store";
 
 import { getStoreContext } from "./context";
 
-type EqualityFunc<Result> = (lhs: Result, rhs: Result) => boolean;
-
 /**
  * Returns a Svelte store that subscribes to changes in the value returned by
  * the specified selector.
@@ -14,7 +12,6 @@ type EqualityFunc<Result> = (lhs: Result, rhs: Result) => boolean;
  *
  * @param selector Selector function either returned by `createSelector` (from `reselect`)
  *                 or a simple state accessor.
- * @param equalityFunc Optional equality function for more advanced use cases.
  * @param args Additional args to pass to selector.
  *
  * @example
@@ -32,22 +29,9 @@ type EqualityFunc<Result> = (lhs: Result, rhs: Result) => boolean;
  */
 export function useSelector<Result, State>(
   selector: Selector<State, Result>,
-  equalityFunc?: EqualityFunc<Result>,
-  ...args: any[]
-): Readable<Result>;
-export function useSelector<Result, State>(
-  selector: Selector<State, Result>,
   ...args: any[]
 ): Readable<Result> {
-  let equalityFunc = (lhs: Result, rhs: Result): boolean => lhs === rhs;
-
-  if (typeof args[0] === "function") {
-    equalityFunc = args.shift() as EqualityFunc<Result>;
-  }
-
   const store = getStoreContext();
-
-  let lastSelectorValue: Result;
 
   return readable(
     // Make sure we're setting the initial value of the Svelte store to the
@@ -63,13 +47,7 @@ export function useSelector<Result, State>(
     function start(set: (value: Result) => void) {
       const unsubscribe = store.subscribe(() => {
         // @ts-ignore
-        const selectorValue = selector(store.getState<State>(), ...args);
-
-        if (!equalityFunc(selectorValue, lastSelectorValue)) {
-          lastSelectorValue = selectorValue;
-
-          set(lastSelectorValue);
-        }
+        set(selector(store.getState<State>(), ...args));
       });
 
       // As soon as we unsubscribe from the Svelte store, ensure we also
