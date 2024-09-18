@@ -42,16 +42,16 @@
     "vitest": "vitest"
   },
   "devDependencies": {
-    "@laserware/eslint-config": "^3.0.1",
-    "@laserware/stasis": "^3.0.2",
-    "eslint": "^8.57.0",
-    "prettier": "^3.2.5",
-    "svelte": "5.0.0-next.123",
-    "typescript": "^5.4.5",
-    "vitest": "^1.6.0"
+    "@laserware/eslint-config": "^3.2.2",
+    "@laserware/stasis": "^3.2.0",
+    "eslint": "8.57.0",
+    "prettier": "^3.3.3",
+    "svelte": "5.0.0-next.251",
+    "typescript": "^5.6.2",
+    "vitest": "^2.1.1"
   },
   "peerDependencies": {
     "@laserware/stasis": ">=3",
-    "svelte": "*"
+    "svelte": ">=5"
   }
 }
