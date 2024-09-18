@@ -6,5 +6,5 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: ["./tsconfig.json"],
   },
-  ignorePatterns: ["*.js", "*.svelte", "example", "*.cjs"],
+  ignorePatterns: ["*.js", "*.svelte", "example", "*.cjs", "./example"],
 };
