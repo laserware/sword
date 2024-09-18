@@ -1,11 +1,10 @@
 import type { Selector } from "@laserware/stasis";
-import { readable, type Readable } from "svelte/store";
 
-import { getGetStateContext, getStoreContext } from "./context.js";
+import { getGetStateContext } from "./context.js";
 
 /**
- * Returns a Svelte store that subscribes to changes in the value returned by
- * the specified selector.
+ * Returns an object with a `value` property which contains the current value
+ * of the specified selector.
  *
  * @template Result Result returned from the selector.
  * @template State Redux state definition.
@@ -18,44 +17,23 @@ import { getGetStateContext, getStoreContext } from "./context.js";
  * // Inside a Svelte <script> block:
  * import { useSelector } from "@laserware/sword";
  *
- * import { selectStateValue } from "./my-redux-selectors";
+ * import { selectSomeValue } from "./my-redux-selectors";
  *
- * const stateValue = useSelector(selectStateValue);
+ * const someValue = useSelector(selectSomeValue);
  *
  * function handleClick() {
- *   // Note that you must use `$` prefix because it is a Svelte store:
- *   console.log($stateValue);
+ *   console.log(someValue.value);
  * }
  */
 export function useSelector<Result, State>(
   selector: Selector<State, Result>,
   ...args: any[]
-): Readable<Result> {
-  const store = getStoreContext<State>();
+): { readonly value: Result } {
   const getState = getGetStateContext<State>();
 
-  return readable(
-    // Make sure we're setting the initial value of the Svelte store to the
-    // current value in state, otherwise we'll get undefined errors all over
-    // the place:
-    // @ts-ignore
-    selector(getState(), ...args),
-
-    // Create the Redux subscription that updates the Svelte store value
-    // whenever it changes. This enables us to maintain a laser focus on only
-    // updating the UI in response to changes to this particular slice of state,
-    // and it eliminates a lot of extra boilerplate code:
-    function start(set: (value: Result) => void) {
-      const unsubscribe = store.subscribe(() => {
-        // @ts-ignore
-        set(selector(getState(), ...args));
-      });
-
-      // As soon as we unsubscribe from the Svelte store, ensure we also
-      // unsubscribe from the Redux store:
-      return function stop() {
-        unsubscribe();
-      };
+  return {
+    get value(): Result {
+      return selector(getState(), ...args);
     },
-  );
+  };
 }

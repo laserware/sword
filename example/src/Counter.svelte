@@ -35,5 +35,5 @@
   <button onclick={handleIncrementClick}>Increment</button>
   <button onclick={handleDecrementClick}>Decrement</button>
 
-  <div>Value: {$counter}</div>
+  <div>Value: {counter.value}</div>
 </main>
