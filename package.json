@@ -1,6 +1,6 @@
 {
   "name": "@laserware/sword",
-  "version": "2.3.0",
+  "version": "3.0.0-beta.0",
   "description": "Svelte wrapper over Redux.",
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
