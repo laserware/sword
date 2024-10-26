@@ -1,16 +1,15 @@
 {
   "name": "@laserware/sword",
-  "version": "1.3.1",
+  "version": "3.0.0",
   "description": "Svelte wrapper over Redux.",
+  "svelte": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "type": "module",
-  "types": "dist/index.d.ts",
-  "browser": "dist/index.mjs",
-  "svelte": "dist/index.mjs",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "svelte": "./dist/index.mjs",
-      "default": "./dist/index.mjs"
+      "svelte": "./dist/index.js",
+      "default": "./dist/index.js"
     }
   },
   "repository": {
@@ -30,27 +29,32 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsup && cd dist && npx prettier --write .",
+    "prebuild": "rm -rf ./dist",
+    "build": "tsc -p tsconfig.build.json && cp ./src/Provider.svelte ./dist/Provider.svelte && cd dist && npx prettier --write .",
     "prepublishOnly": "npm run build",
-    "preversion": "npm run eslint && npm run typecheck && npm run build",
+    "preversion": "npm run eslint && npm run typecheck",
     "version": "npm run prettier && git add -A src",
     "postversion": "git push && git push --tags",
     "typecheck": "tsc --noEmit",
     "prettier": "prettier --cache --write src",
     "prettier:ci": "prettier --check src",
-    "eslint": "eslint --cache src"
+    "eslint": "eslint --cache src",
+    "vitest": "vitest",
+    "example": "cd example && npm run start"
   },
   "devDependencies": {
-    "@laserware/eslint-config": "^3.2.0",
-    "@laserware/stasis": "^3.2.0",
-    "eslint": "8.57.0",
-    "prettier": "^3.3.2",
-    "svelte": "^4.2.18",
-    "tsup": "^8.1.0",
-    "typescript": "^5.5.2"
+    "@laserware/eslint-config": "^4.0.0",
+    "@laserware/stasis": "^4.0.2",
+    "eslint": "^9.13.0",
+    "prettier": "^3.3.3",
+    "svelte": "^5.1.3",
+    "typescript": "^5.6.3"
   },
   "peerDependencies": {
-    "@laserware/stasis": ">=3",
-    "svelte": ">=4"
+    "@laserware/stasis": ">=4",
+    "svelte": ">=5"
+  },
+  "prettier": {
+    "trailingComma": "all"
   }
 }

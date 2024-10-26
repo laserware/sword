@@ -1,5 +1,5 @@
-export { useDispatch } from "./useDispatch";
-export { useSelector } from "./useSelector";
-export { useState } from "./useState";
-export { useStore } from "./useStore";
-export { withSword } from "./withSword";
+export { useDispatch } from "./useDispatch.js";
+export { useSelector } from "./useSelector.js";
+export { useState } from "./useState.js";
+export { useStore } from "./useStore.js";
+export { default as Provider } from "./Provider.svelte";
