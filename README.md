@@ -24,7 +24,7 @@ const app = mount(App, { target: document.body });
 export default app();
 ```
 
-```sveltehtml
+```html
 <!-- App.svelte -->
 <script lang="ts">
   import { Provider } from "@laserware/sword";
@@ -43,7 +43,7 @@ export default app();
 
 Import the `useDispatch` or `useSelect` functions in components that need to dispatch Redux actions or access Redux state:
 
-```sveltehtml
+```html
 <!-- MyComponent.svelte -->
 <script lang="ts">
   import { useDispatch, useSelector } from "@laserware/sword";
