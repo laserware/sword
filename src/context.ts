@@ -11,7 +11,7 @@ const storeContextKey = Symbol("@laserware/sword/store");
  * Key used to access the Redux state getter from the Svelte context.
  * @private
  */
-const getStateContextKey = "@laserware/sword/state";
+const getStateContextKey = Symbol("@laserware/sword/state");
 
 export function setSwordContext<State>(
   store: Store<State>,

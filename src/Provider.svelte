@@ -1,12 +1,9 @@
-<script lang="ts">
-  import { onDestroy, type Snippet } from "svelte";
-  import type { EnhancedStore } from "@laserware/stasis";
+<script>
+  import { onDestroy } from "svelte";
 
-  import {
-    setSwordContext,
-  } from "./context.js";
+  import { setSwordContext } from "./context.js";
 
-  let { store, children }: { store: EnhancedStore; children: Snippet } = $props();
+  let { store, children } = $props();
 
   let state = $state(store.getState());
 
