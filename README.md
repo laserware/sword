@@ -1,4 +1,4 @@
-# @laserware/sword
+# Sword
 
 Svelte wrapper over Redux.
 
