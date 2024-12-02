@@ -3,19 +3,26 @@ import type { UnknownAction } from "@laserware/stasis";
 import { getStoreContext } from "./context.js";
 
 /**
- * Returns a dispatch function that can be called with a Redux action.
+ * Gets the `dispatch` function from the Redux store in context.
+ *
+ * @returns Dispatch function that can be called with a Redux action.
  *
  * @example
- * // Inside a Svelte <script> block:
- * import { useDispatch } from "@laserware/sword";
+ * ```html
+ * <script>
+ *   import { useDispatch } from "@laserware/sword";
  *
- * import { someAction } from "./my-redux-actions";
+ *   import { someAction } from "./my-redux-actions";
  *
- * const dispatch = useDispatch();
+ *   const dispatch = useDispatch();
  *
- * function handleClick() {
- *   dispatch(someAction());
- * }
+ *   function handleClick() {
+ *     dispatch(someAction());
+ *   }
+ * </script>
+ *
+ * <button onclick={handleClick}>Click Me</button>
+ * ```
  */
 export function useDispatch(): (action: UnknownAction) => void {
   const store = getStoreContext();

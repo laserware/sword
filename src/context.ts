@@ -3,16 +3,23 @@ import { getContext, setContext } from "svelte";
 
 /**
  * Key used to access the Redux store from the Svelte context.
- * @private
+ *
+ * @internal
  */
-const storeContextKey = Symbol("@laserware/sword/store");
+export const storeContextKey = Symbol("@laserware/sword/store");
 
 /**
  * Key used to access the Redux state getter from the Svelte context.
- * @private
+ *
+ * @internal
  */
-const getStateContextKey = Symbol("@laserware/sword/state");
+export const getStateContextKey = Symbol("@laserware/sword/state");
 
+/**
+ * Adds the specified Redux `store` and `getState` function to Svelte context.
+ *
+ * @internal
+ */
 export function setSwordContext<State>(
   store: Store<State>,
   getState: () => State,
@@ -24,17 +31,21 @@ export function setSwordContext<State>(
 /**
  * Returns the Redux store from Svelte context.
  *
- * @template State Redux state definition.
+ * @internal
+ *
+ * @template S Redux state definition.
  */
-export function getStoreContext<State>(): Store<State> {
-  return getContext<Store<State>>(storeContextKey);
+export function getStoreContext<S>(): Store<S> {
+  return getContext<Store<S>>(storeContextKey);
 }
 
 /**
  * Returns the Redux state getter from Svelte context.
  *
- * @template State Redux state definition.
+ * @internal
+ *
+ * @template S Redux state definition.
  */
-export function getGetStateContext<State>(): () => State {
-  return getContext<() => State>(getStateContextKey);
+export function getGetStateContext<S>(): () => S {
+  return getContext<() => S>(getStateContextKey);
 }

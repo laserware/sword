@@ -1,0 +1,26 @@
+{
+  "cleanOutputDir": true,
+  "entryPoints": ["./src/index.ts"],
+  "exclude": ["**/**test.ts"],
+  "excludeInternal": true,
+  "excludeNotDocumented": true,
+  "externalSymbolLinkMappings": {
+    "redux": {
+      "Store": "https://redux.js.org/api/store",
+      "UnknownAction": "https://redux.js.org/tutorials/fundamentals/part-2-concepts-data-flow#actions"
+    }
+  },
+  "headings": { "readme": false, "document": false },
+  "hideGenerator": true,
+  "navigation": {
+    "compactFolders": true,
+    "excludeReferences": true,
+    "includeCategories": true,
+    "includeFolders": true,
+    "includeGroups": false
+  },
+  "markdownLinkExternal": true,
+  "navigationLinks": { "GitHub": "https://github.com/laserware/sword" },
+  "out": "site",
+  "readme": "./README.md"
+}

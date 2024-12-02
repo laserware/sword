@@ -3,36 +3,44 @@ import type { Selector } from "@laserware/stasis";
 import { getGetStateContext } from "./context.js";
 
 /**
- * Returns an object with a `value` property which contains the current value
- * of the specified selector.
+ * Creates an object with a `value` property which contains the current value
+ * of the specified `selector`.
  *
- * @template Result Result returned from the selector.
- * @template State Redux state definition.
+ * @template R Return value from the `selector`.
+ * @template S Redux state definition.
  *
- * @param selector Selector function either returned by `createSelector` (from `reselect`)
+ * @param selector Selector function either returned by [`createSelector`](https://redux-toolkit.js.org/api/createSelector)
  *                 or a simple state accessor.
  * @param args Additional args to pass to selector.
  *
+ * @returns An object with a reactive `value` property that represents the return
+ *          value of the specified `selector`.
+ *
  * @example
- * // Inside a Svelte <script> block:
- * import { useSelector } from "@laserware/sword";
+ * ```html
+ * <script>
+ *   import { useSelector } from "@laserware/sword";
  *
- * import { selectSomeValue } from "./my-redux-selectors";
+ *   import { selectSomeValue } from "./my-redux-selectors";
  *
- * const someValue = useSelector(selectSomeValue);
+ *   const someValue = useSelector(selectSomeValue);
  *
- * function handleClick() {
- *   console.log(someValue.value);
- * }
+ *   function handleClick() {
+ *     console.log(someValue.value);
+ *   }
+ * </script>
+ *
+ * <button onclick={handleClick}>Click Me</button>
+ * ```
  */
-export function useSelector<Result, State>(
-  selector: Selector<State, Result>,
+export function useSelector<R, S>(
+  selector: Selector<S, R>,
   ...args: any[]
-): { readonly value: Result } {
-  const getState = getGetStateContext<State>();
+): { readonly value: R } {
+  const getState = getGetStateContext<S>();
 
   return {
-    get value(): Result {
+    get value(): R {
       return selector(getState(), ...args);
     },
   };

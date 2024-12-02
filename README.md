@@ -2,18 +2,21 @@
 
 Svelte wrapper over Redux.
 
+> Note that v3 of the library only works with Svelte v5!
+
 ## Usage
 
-Install the dependency. Note that `svelte` is required as a peer dependency:
+Install the dependency. Note that `svelte` and `@laserware/stasis` are required as a peer dependencies:
 
-```
+```bash
 npm install @laserware/sword @laserware/stasis svelte
 ```
 
 Wrap your Svelte entry point component with `<Provider>`:
 
+**Entry File (`src/main.ts`)**
+
 ```ts
-// src/main.ts
 import { Provider } from "@laserware/sword";
 import { mount } from "svelte";
 
@@ -24,8 +27,9 @@ const app = mount(App, { target: document.body });
 export default app();
 ```
 
+**Svelte Component (`src/App.svelte`)**
+
 ```html
-<!-- App.svelte -->
 <script lang="ts">
   import { Provider } from "@laserware/sword";
 
@@ -39,6 +43,28 @@ export default app();
 <Provider {store}>
   <MyComponent />
 </Provider>
+```
+
+If you don't want to create another component file just to add Redux context, you can use the `provide` function:
+
+**Entry File (`src/main.ts`)**
+
+```ts
+import { provide } from "@laserware/sword";
+import { mount } from "svelte";
+
+import { createStore } from "./my-redux-store";
+
+import App from "./App.svelte";
+
+const store = createStore();
+
+const app = mount(App, { 
+  target: document.body,
+  context: provide(store),
+});
+
+export default app();
 ```
 
 Import the `useDispatch` or `useSelect` functions in components that need to dispatch Redux actions or access Redux state:
