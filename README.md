@@ -86,5 +86,5 @@ Import the `useDispatch` or `useSelect` functions in components that need to dis
   }
 </script>
 
-<button on:click={handleClick}>Click me</button>
+<button onclick={handleClick}>Click me</button>
 ```
