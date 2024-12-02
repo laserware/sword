@@ -1,5 +1,9 @@
 import { mount } from "svelte";
 
+import { provide } from "../../dist/index";
+import { createStore } from "./store";
 import App from "./App.svelte";
 
-export default mount(App, { target: document.body });
+const store = createStore();
+
+export default mount(App, { target: document.body, context: provide(store) });
