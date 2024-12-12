@@ -2,7 +2,8 @@
 
 Svelte wrapper over Redux.
 
-> Note that v3 of the library only works with Svelte v5!
+> [!IMPORTANT]
+> Version 3 of this library only works with Svelte v5!
 
 ## Usage
 

@@ -45,12 +45,12 @@
     "example": "cd example && npm run start"
   },
   "devDependencies": {
-    "@laserware/eslint-config": "^5.2.0",
-    "@laserware/stasis": "^4.0.2",
+    "@laserware/eslint-config": "^5.3.0",
+    "@laserware/stasis": "^4.1.0",
     "eslint": "^9.16.0",
     "prettier": "^3.4.2",
-    "svelte": "^5.7.1",
-    "typedoc": "^0.27.3",
+    "svelte": "^5.11.2",
+    "typedoc": "^0.27.4",
     "typescript": "^5.7.2",
     "vitest": "^2.1.8"
   },
