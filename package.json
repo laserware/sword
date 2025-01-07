@@ -43,19 +43,23 @@
     "docs:serve": "mkdir -p ./site && cd ./site && bunx vite",
     "format": "biome check --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true --write src example/src",
     "lint": "biome lint src example/src",
+    "test": "bun test",
     "typecheck": "tsc --noEmit",
     "example": "cd example && bun run start"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
+    "@reduxjs/toolkit": "^2.5.0",
     "@types/bun": "latest",
-    "@laserware/stasis": "^4.1.1",
     "svelte": "^5.16.1",
     "typedoc": "^0.27.6",
     "typescript": "^5.7.2"
   },
   "peerDependencies": {
-    "@laserware/stasis": ">=4",
     "svelte": ">=5"
+  },
+  "optionalDependencies": {
+    "@laserware/stasis": ">=4",
+    "@reduxjs/toolkit": ">=2"
   }
 }
