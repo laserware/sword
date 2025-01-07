@@ -12,7 +12,8 @@
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
-    "lineWidth": 80
+    "lineWidth": 80,
+    "ignore": ["./package.json"]
   },
   "overrides": [
     {

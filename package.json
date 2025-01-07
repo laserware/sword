@@ -21,8 +21,13 @@
       "default": "./dist/index.js"
     }
   },
-  "files": ["dist"],
-  "keywords": ["svelte", "redux"],
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "svelte",
+    "redux"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -67,5 +72,7 @@
       "optional": true
     }
   },
-  "trustedDependencies": ["@biomejs/biome"]
+  "trustedDependencies": [
+    "@biomejs/biome"
+  ]
 }
