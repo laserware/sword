@@ -9,8 +9,8 @@
     "type": "git"
   },
   "type": "module",
-  "browser": "dist/index.mjs",
-  "main": "dist/index.mjs",
+  "browser": "dist/index.js",
+  "main": "dist/index.js",
   "svelte": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -33,35 +33,29 @@
   "sideEffects": false,
   "scripts": {
     "prebuild": "rm -rf ./dist",
-    "build": "tsc -p tsconfig.build.json && cp ./src/Provider.svelte ./dist/Provider.svelte && cd dist && npx prettier --write .",
-    "prepublishOnly": "npm run build",
-    "preversion": "npm run eslint && npm run typecheck",
-    "version": "npm run prettier && git add -A src",
+    "build": "tsc -p tsconfig.build.json && cp ./src/Provider.svelte ./dist/Provider.svelte",
+    "prepublishOnly": "bun run build",
+    "preversion": "bun run lint && bun run typecheck",
+    "version": "bun run format && git add -A src",
     "postversion": "git push && git push --tags",
+    "ci": "biome ci src",
     "docs:generate": "typedoc  --options typedoc.json",
-    "docs:serve": "mkdir -p ./site && cd ./site && ../node_modules/.bin/vite",
+    "docs:serve": "mkdir -p ./site && cd ./site && bunx vite",
+    "format": "biome check --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true --write src example/src",
+    "lint": "biome lint src example/src",
     "typecheck": "tsc --noEmit",
-    "prettier": "prettier --cache --write src",
-    "prettier:ci": "prettier --check src",
-    "eslint": "eslint --cache src",
-    "vitest": "vitest",
-    "example": "cd example && npm run start"
+    "example": "cd example && bun run start"
   },
   "devDependencies": {
-    "@laserware/eslint-config": "^5.3.0",
+    "@biomejs/biome": "1.9.4",
+    "@types/bun": "latest",
     "@laserware/stasis": "^4.1.1",
-    "eslint": "^9.17.0",
-    "prettier": "^3.4.2",
     "svelte": "^5.16.1",
     "typedoc": "^0.27.6",
-    "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "typescript": "^5.7.2"
   },
   "peerDependencies": {
     "@laserware/stasis": ">=4",
     "svelte": ">=5"
-  },
-  "prettier": {
-    "trailingComma": "all"
   }
 }

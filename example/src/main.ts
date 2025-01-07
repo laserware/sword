@@ -1,8 +1,8 @@
 import { mount } from "svelte";
 
 import { provide } from "../../dist/index";
-import { createStore } from "./store";
 import App from "./App.svelte";
+import { createStore } from "./store.js";
 
 const store = createStore();
 
