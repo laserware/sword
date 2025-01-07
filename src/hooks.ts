@@ -1,6 +1,6 @@
-import type { UnknownAction, Selector, Store } from "@reduxjs/toolkit";
+import type { Selector, Store, UnknownAction } from "@reduxjs/toolkit";
 
-import { getStoreContext, getGetStateContext } from "./context.js";
+import { getGetStateContext, getStoreContext } from "./context.js";
 
 /**
  * Gets the `dispatch` function from the Redux store in context.

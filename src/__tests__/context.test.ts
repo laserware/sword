@@ -1,13 +1,13 @@
 import { describe, expect, it, mock } from "bun:test";
 
-import { createSlice, configureStore } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 import {
-  storeContextKey,
-  getStateContextKey,
-  setSwordContext,
-  getStoreContext,
   getGetStateContext,
+  getStateContextKey,
+  getStoreContext,
+  setSwordContext,
+  storeContextKey,
 } from "../context.js";
 
 const counterSlice = createSlice({
