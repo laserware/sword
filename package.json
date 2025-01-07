@@ -2,12 +2,13 @@
   "name": "@laserware/sword",
   "version": "3.2.1",
   "description": "Svelte wrapper over Redux.",
-  "author": "Mike Rourke <mike.w.rourke@gmail.com>",
+  "author": "Mike Rourke <mike.w.rourke@gmail.com> (https://mikerourke.dev/)",
   "license": "MIT",
   "repository": {
     "url": "git+https://github.com/laserware/sword.git",
     "type": "git"
   },
+  "homepage": "https://laserware.github.io/sword/",
   "type": "module",
   "browser": "dist/index.js",
   "main": "dist/index.js",
@@ -20,13 +21,8 @@
       "default": "./dist/index.js"
     }
   },
-  "files": [
-    "dist"
-  ],
-  "keywords": [
-    "svelte",
-    "redux"
-  ],
+  "files": ["dist"],
+  "keywords": ["svelte", "redux"],
   "publishConfig": {
     "access": "public"
   },
@@ -56,10 +52,20 @@
     "typescript": "^5.7.2"
   },
   "peerDependencies": {
+    "@laserware/stasis": ">=4",
+    "@reduxjs/toolkit": ">=2",
     "svelte": ">=5"
   },
-  "optionalDependencies": {
-    "@laserware/stasis": ">=4",
-    "@reduxjs/toolkit": ">=2"
-  }
+  "peerDependenciesMeta": {
+    "svelte": {
+      "optional": false
+    },
+    "@laserware/stasis": {
+      "optional": true
+    },
+    "@reduxjs/toolkit": {
+      "optional": true
+    }
+  },
+  "trustedDependencies": ["@biomejs/biome"]
 }
