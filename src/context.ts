@@ -1,4 +1,4 @@
-import type { Store } from "@laserware/stasis";
+import type { Store } from "@reduxjs/toolkit";
 import { getContext, setContext } from "svelte";
 
 /**

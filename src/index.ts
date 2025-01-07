@@ -1,10 +1,7 @@
 import type { SvelteComponent } from "svelte";
 
+export { useDispatch, useSelector, useState, useStore } from "./hooks.js";
 export { provide } from "./provide.svelte.js";
-export { useDispatch } from "./useDispatch.js";
-export { useSelector } from "./useSelector.js";
-export { useState } from "./useState.js";
-export { useStore } from "./useStore.js";
 export { default as Provider } from "./Provider.svelte";
 
 /**
