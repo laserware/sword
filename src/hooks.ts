@@ -79,8 +79,8 @@ export function useSelector<R, S>(
 /**
  * Returns a function to get the current state from the Redux store in context.
  *
- * Note that we can't just return state here because we probably want to
- * access it dynamically and Svelte won't let you do that within a function
+ * Note that we can't just return the state here because we probably want to
+ * access it dynamically, and Svelte won't let you do that within a function
  * (since the context must be initialized with the component loads).
  *
  * @template S Redux state definition.
@@ -107,7 +107,7 @@ export function useState<S>(): () => S {
 }
 
 /**
- * Gets the Redux store from Svelte context. Note that you should normally
+ * Gets the Redux store from the Svelte context. Note that you should normally
  * not need to use this unless you need to call `replaceReducer` or perform
  * some other operation that requires access to the entire store.
  *

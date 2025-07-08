@@ -1,8 +1,8 @@
 import type { SvelteComponent } from "svelte";
 
 export { useDispatch, useSelector, useState, useStore } from "./hooks.js";
-export { provide } from "./provide.svelte.js";
 export { default as Provider } from "./Provider.svelte";
+export { provide } from "./provide.svelte.js";
 
 /**
  * This is a type alias for the `<Provider>` component. Do _not_ use this

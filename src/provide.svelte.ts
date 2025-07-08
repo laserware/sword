@@ -40,7 +40,7 @@ import { getStateContextKey, storeContextKey } from "./context.js";
  *
  * **With Additional Context Entries**
  *
- * If you need to add other items to Svelte context, just use the return value
+ * If you need to add other items to the Svelte context, use the return value
  * of `provide`:
  *
  * ```ts
