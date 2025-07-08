@@ -1,4 +1,4 @@
-import type { Store } from "@laserware/stasis";
+import type { Store } from "@reduxjs/toolkit";
 import { getContext, setContext } from "svelte";
 
 /**
@@ -40,7 +40,7 @@ export function getStoreContext<S>(): Store<S> {
 }
 
 /**
- * Returns the Redux state getter from Svelte context.
+ * Returns the Redux state getter from the Svelte context.
  *
  * @internal
  *

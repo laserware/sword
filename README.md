@@ -7,10 +7,16 @@ Svelte wrapper over Redux.
 
 ## Usage
 
-Install the dependency. Note that `svelte` and `@laserware/stasis` are required as a peer dependencies:
+Install the dependency. Note that `svelte` is required and `@laserware/stasis` *or* `@reduxjs/toolkit` are required as peer dependencies:
 
 ```bash
 npm install @laserware/sword @laserware/stasis svelte
+```
+
+Or
+
+```bash
+npm install @laserware/sword @reduxjs/toolkit svelte
 ```
 
 Wrap your Svelte entry point component with `<Provider>`:
